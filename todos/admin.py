@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Todo
 
-# Register your models here.
+@admin.register(Todo)
+class TodoAdmin(admin.ModelAdmin):
+    # This configures how the list looks in the admin
+    list_display = ('title', 'due_date', 'is_resolved', 'created_at')
+    list_filter = ('is_resolved', 'due_date')
+    search_fields = ('title', 'description')
