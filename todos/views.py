@@ -2,8 +2,7 @@
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
-
-from todo_py.todos.forms import TodoForm
+from .forms import TodoForm
 from .models import Todo
 
 # 1. List all TODOs
