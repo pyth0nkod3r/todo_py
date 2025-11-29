@@ -1,0 +1,41 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Task</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+            <tr>
+                <td>
+                    <a href="{% url 'todo-toggle' todo.pk %}" role="button" class="outline">
+                        {% if todo.is_resolved %}✅{% else %}⬜{% endif %}
+                    </a>
+                </td>
+                <td>
+                    {% if todo.is_resolved %}
+                        <del>{{ todo.title }}</del>
+                    {% else %}
+                        {{ todo.title }}
+                    {% endif %}
+                </td>
+                <td>{{ todo.due_date|date:"M d, Y" }}</td>
+                <td>
+                    <a href="{% url 'todo-update' todo.pk %}">Edit</a> | 
+                    <a href="{% url 'todo-delete' todo.pk %}" style="color: red;">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No tasks yet!</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

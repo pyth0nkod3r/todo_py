@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Todo</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><strong>My Todo App</strong></li>
+            </ul>
+            <ul>
+                <li><a href="{% url 'todo-list' %}">List</a></li>
+                <li><a href="{% url 'todo-create' %}" role="button">Add Task</a></li>
+            </ul>
+        </nav>
+        <hr>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
